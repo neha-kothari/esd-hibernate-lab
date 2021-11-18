@@ -26,9 +26,9 @@ public class EmployeesDaoImpl implements EmployeesDao {
 
     @Override
     public List<Employees> getEmployees() {
-        Session session = HibernateSessionUtil.getSession();
+
         List<Employees> employeesList = new ArrayList<>();
-        try {
+        try (Session session = HibernateSessionUtil.getSession();){
             for (final Object employee : session.createQuery("from Employees ").list()) {
                 employeesList.add((Employees) employee);
             }

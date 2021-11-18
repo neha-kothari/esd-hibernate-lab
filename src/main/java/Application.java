@@ -1,5 +1,9 @@
+import com.example.erp.bean.Departments;
 import com.example.erp.bean.Employees;
+import com.example.erp.dao.impl.DepartmentDaoImpl;
+import com.example.erp.dao.impl.EmployeesDaoImpl;
 import com.example.erp.util.HibernateSessionUtil;
+import com.sun.nio.sctp.PeerAddressChangeNotification;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -43,22 +47,27 @@ public class Application {
 //        //terminate session factory, otherwise program won't end
 //        HibernateSessionUtil.getSession().close();
 
-        Session session = HibernateSessionUtil.getSession();
-        try{
-            Employees emp = new Employees();
-            emp.setEmp_id(1);
-            emp.setName("meghna");
-            emp.setDob("30-10-98");
-            Transaction transaction = session.beginTransaction();
-            session.save(emp);
-            transaction.commit();
-        }catch(
-                HibernateException exception
-        ){
-            System.out.println(exception.getLocalizedMessage());
-        }
-        HibernateSessionUtil.getSession().close();
+        DepartmentDaoImpl departmentDao = new DepartmentDaoImpl();
+        Departments dep1 = new Departments();
+        dep1.setDept_id(1);
+        dep1.setName("TA");
+        dep1.setAddress("Bangalore");
+        departmentDao.addDepartment(dep1);
+
+        EmployeesDaoImpl employeesDao = new EmployeesDaoImpl();
+        Employees emp1 = new Employees();
+        Employees emp2 = new Employees();
+        emp2.setEmp_id(2);
+        emp1.setEmp_id(1);
+        emp1.setName("meghna");
+        emp2.setName("neha");
+        emp1.setDob("30-10-98");
+        emp2.setDob("999999");
+        emp1.setDepartments(dep1);
+        emp2.setDepartments(dep1);
+        employeesDao.addEmployee(emp1);
+        employeesDao.addEmployee(emp2);
+
+
     }
-
-
 }
