@@ -62,7 +62,7 @@ public class Application {
         emp1.setName("meghna");
         emp2.setName("neha");
         emp1.setDob("30-10-98");
-        emp2.setDob("999999");
+        emp2.setDob("10-05-96");
         emp1.setDepartments(dep1);
         emp2.setDepartments(dep1);
         employeesDao.addEmployee(emp1);

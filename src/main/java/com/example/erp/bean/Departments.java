@@ -8,6 +8,7 @@ import java.util.List;
 public class Departments {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dept_id;
 
     @Column(name="dept_name")

@@ -6,11 +6,12 @@ import java.util.List;
 @Entity
 @Table
 public class Projects {
-    @Id @GeneratedValue
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int project_id;
 
     @Column
-    private String name;
+    private String project_name;
 
     @ManyToMany
     private List<Employees> employeesList;
@@ -18,26 +19,20 @@ public class Projects {
     public Projects() {
     }
 
-    public Projects(int id, String name, List<Employees> employeesList) {
-        this.id = id;
-        this.name = name;
-        this.employeesList = employeesList;
+    public int getProject_id() {
+        return project_id;
     }
 
-    public int getId() {
-        return id;
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getProject_name() {
+        return project_name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setProject_name(String project_name) {
+        this.project_name = project_name;
     }
 
     public List<Employees> getEmployeesList() {
