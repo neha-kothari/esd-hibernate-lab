@@ -10,7 +10,7 @@ public class Employees {
     private int emp_id;
 
     @Column
-    private int name;
+    private String name;
 
     @Column
     private String dob;
@@ -25,7 +25,7 @@ public class Employees {
     public Employees() {
     }
 
-    public Employees(int emp_id, int name, String dob, Departments departments, List<Projects> projectsList) {
+    public Employees(int emp_id, String name, String dob, Departments departments, List<Projects> projectsList) {
         this.emp_id = emp_id;
         this.name = name;
         this.dob = dob;
@@ -41,11 +41,11 @@ public class Employees {
         this.emp_id = emp_id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
